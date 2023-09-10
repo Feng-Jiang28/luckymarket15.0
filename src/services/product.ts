@@ -31,7 +31,7 @@ class ProductService extends MedusaProductService {
         if (!selector.store_id && this.loggedInCustomer_?.store_id) {
             selector.store_id = this.loggedInCustomer_.store_id
         }
-
+        // console.log(`selector: ${JSON.stringify(selector)}`)
         config.select?.push('store_id')
 
         config.relations?.push('store')
@@ -40,10 +40,10 @@ class ProductService extends MedusaProductService {
     }
 
     async listAndCount(selector: ProductSelector, config?: FindProductConfig): Promise<[Product[], number]> {
-        if (!selector.store_id && this.loggedInCustomer_?.store_id) {
-            selector.store_id = this.loggedInCustomer_.store_id
-        }
-
+        // if (!selector.store_id && this.loggedInCustomer_?.store_id) {
+        //     selector.store_id = this.loggedInCustomer_.store_id
+        // }
+        // console.log(`selector: ${JSON.stringify(selector)}`)
         config.select?.push('store_id')
 
         config.relations?.push('store')
