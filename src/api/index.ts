@@ -1,11 +1,11 @@
 import { Router } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import { authenticate, authenticateCustomer,ConfigModule } from "@medusajs/medusa";
+import { authenticate, authenticateCustomer, ConfigModule } from "@medusajs/medusa";
 import { getConfigFile } from "medusa-core-utils";
 import { attachStoreRoutes } from "./routes/store";
 import { attachAdminRoutes } from "./routes/admin";
-import {registerLoggedInCustomer} from "./middlewares/logged-in-customer";
+import { registerLoggedInCustomer } from "./middlewares/logged-in-customer";
 
 export default (rootDirectory: string): Router | Router[] => {
   // Read currently-loaded medusa config

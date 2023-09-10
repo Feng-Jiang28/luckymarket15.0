@@ -28,9 +28,9 @@ class ProductService extends MedusaProductService {
     }
 
     async list(selector: ProductSelector, config?: FindProductConfig): Promise<Product[]> {
-        if (!selector.store_id && this.loggedInCustomer_?.store_id) {
-            selector.store_id = this.loggedInCustomer_.store_id
-        }
+        // if (!selector.store_id && this.loggedInCustomer_?.store_id) {
+        //     selector.store_id = this.loggedInCustomer_.store_id
+        // }
         // console.log(`selector: ${JSON.stringify(selector)}`)
         config.select?.push('store_id')
 
@@ -43,6 +43,30 @@ class ProductService extends MedusaProductService {
         // if (!selector.store_id && this.loggedInCustomer_?.store_id) {
         //     selector.store_id = this.loggedInCustomer_.store_id
         // }
+        // console.log(`selector: ${JSON.stringify(selector)}`)
+        config.select?.push('store_id')
+
+        config.relations?.push('store')
+
+        return await super.listAndCount(selector, config)
+    }
+
+    async listByStore(selector: ProductSelector, config?: FindProductConfig): Promise<Product[]> {
+        if (!selector.store_id && this.loggedInCustomer_?.store_id) {
+            selector.store_id = this.loggedInCustomer_.store_id
+        }
+        // console.log(`selector: ${JSON.stringify(selector)}`)
+        config.select?.push('store_id')
+
+        config.relations?.push('store')
+
+        return await super.list(selector, config)
+    }
+
+    async listAndCountByStore(selector: ProductSelector, config?: FindProductConfig): Promise<[Product[], number]> {
+        if (!selector.store_id && this.loggedInCustomer_?.store_id) {
+            selector.store_id = this.loggedInCustomer_.store_id
+        }
         // console.log(`selector: ${JSON.stringify(selector)}`)
         config.select?.push('store_id')
 
