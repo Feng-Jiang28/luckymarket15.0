@@ -1,4 +1,4 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, OneToOne } from "typeorm"
+import { Column, Entity, Index, JoinColumn, OneToOne } from "typeorm"
 import { Customer as MedusaCustomer } from "@medusajs/medusa"
 import { Store } from "./store";
 
